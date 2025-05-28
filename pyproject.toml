@@ -1,0 +1,26 @@
+[project]
+name = "mads-telemarketing-project"
+version = "0.1.0"
+description = "Predictive modelling module assignment"
+authors = [
+    { name = "Koen van Esterik", email = "kd.vanesterik@student.han.nl" },
+]
+dependencies = [
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.3",
+    "numpy>=2.2.6",
+    "pandas>=2.2.3",
+    "scikit-learn>=1.6.1",
+    "ucimlrepo>=0.0.7",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = { text = "MIT" }
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true
