@@ -4,7 +4,7 @@
 
 ## Master of Applied Data Science - HAN University
 
-This repository contains my submission for the Predictive Modelling practice assignment, part of the Master of Applied Data Science at HAN University (2025).
+This repository contains my submission for the Predictive Modelling (2024 P3A) practice assignment, part of the Master of Applied Data Science at HAN University.
 
 The project is a fictional machine learning case study using the [Bank Marketing](https://archive.ics.uci.edu/dataset/222/bank+marketing) dataset from the [UC Irvine Machine Learning Repository](https://archive.ics.uci.edu/).
 
