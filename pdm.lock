@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:3c33ff60cf6ff63f811e03f159d9b17ccd1e9b082d18334e6600529d7e0d8fd5"
+content_hash = "sha256:ea0b37d7eed5165d1351a909362a4ea31e55f10f6a8a4e1a94b4f3de5c77cbb0"
 
 [[metadata.targets]]
 requires_python = ">=3.11"
@@ -555,6 +555,38 @@ groups = ["default"]
 files = [
     {file = "idna-3.10-py3-none-any.whl", hash = "sha256:946d195a0d259cbba61165e88e65941f16e9b36ea6ddb97f00452bae8b1287d3"},
     {file = "idna-3.10.tar.gz", hash = "sha256:12f65c9b470abda6dc35cf8e63cc574b1c52b11df2c86030af0ac09b01b13ea9"},
+]
+
+[[package]]
+name = "imbalanced-learn"
+version = "0.13.0"
+requires_python = ">=3.10"
+summary = "Toolbox for imbalanced dataset in machine learning"
+groups = ["default"]
+dependencies = [
+    "joblib<2,>=1.1.1",
+    "numpy<3,>=1.24.3",
+    "scikit-learn<2,>=1.3.2",
+    "scipy<2,>=1.10.1",
+    "sklearn-compat<1,>=0.1",
+    "threadpoolctl<4,>=2.0.0",
+]
+files = [
+    {file = "imbalanced_learn-0.13.0-py3-none-any.whl", hash = "sha256:7eb5859f7827cb3babfa5789978c22fe36e56527d9c9768df2d864d98d9b40fe"},
+    {file = "imbalanced_learn-0.13.0.tar.gz", hash = "sha256:d4a8d6372086982350d6de1c7e5b1ed5ece9e41bf93043b4d0e9ea1c422a6606"},
+]
+
+[[package]]
+name = "imblearn"
+version = "0.0"
+summary = "Toolbox for imbalanced dataset in machine learning."
+groups = ["default"]
+dependencies = [
+    "imbalanced-learn",
+]
+files = [
+    {file = "imblearn-0.0-py2.py3-none-any.whl", hash = "sha256:d42c2d709d22c00d2b9a91e638d57240a8b79b4014122d92181fcd2549a2f79a"},
+    {file = "imblearn-0.0.tar.gz", hash = "sha256:d8fbb662919c1b16f438ad91a8256220e53bcf6815c9ad5502c518b798de34f2"},
 ]
 
 [[package]]
@@ -2034,6 +2066,20 @@ files = [
 ]
 
 [[package]]
+name = "sklearn-compat"
+version = "0.1.3"
+requires_python = ">=3.8"
+summary = "Ease support for compatible scikit-learn estimators across versions"
+groups = ["default"]
+dependencies = [
+    "scikit-learn<1.7,>=1.2",
+]
+files = [
+    {file = "sklearn_compat-0.1.3-py3-none-any.whl", hash = "sha256:a8aaf8ef711988cbd63f187c5560b5f16b25df663aaa1d2d0e1291341d339f80"},
+    {file = "sklearn_compat-0.1.3.tar.gz", hash = "sha256:74f8267613249d599aa3a2f2503af32fa51bce0800b1b0b0a57b52354402454e"},
+]
+
+[[package]]
 name = "sniffio"
 version = "1.3.1"
 requires_python = ">=3.7"
@@ -2068,6 +2114,17 @@ dependencies = [
 files = [
     {file = "stack_data-0.6.3-py3-none-any.whl", hash = "sha256:d5558e0c25a4cb0853cddad3d77da9891a08cb85dd9f9f91b9f8cd66e511e695"},
     {file = "stack_data-0.6.3.tar.gz", hash = "sha256:836a778de4fec4dcd1dcd89ed8abff8a221f58308462e1c4aa2a3cf30148f0b9"},
+]
+
+[[package]]
+name = "tabulate"
+version = "0.9.0"
+requires_python = ">=3.7"
+summary = "Pretty-print tabular data"
+groups = ["default"]
+files = [
+    {file = "tabulate-0.9.0-py3-none-any.whl", hash = "sha256:024ca478df22e9340661486f85298cff5f6dcdba14f3813e8830015b9ed1948f"},
+    {file = "tabulate-0.9.0.tar.gz", hash = "sha256:0095b12bf5966de529c0feb1fa08671671b3368eec77d7ef7ab114be2c068b3c"},
 ]
 
 [[package]]
