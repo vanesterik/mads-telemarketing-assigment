@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:ea0b37d7eed5165d1351a909362a4ea31e55f10f6a8a4e1a94b4f3de5c77cbb0"
+content_hash = "sha256:a484843142ec0dd71d6bad37bd090e7f0c1efaa12f92472417bcdd2cee2ef5bc"
 
 [[metadata.targets]]
 requires_python = ">=3.11"
@@ -1447,6 +1447,21 @@ files = [
 ]
 
 [[package]]
+name = "pandas-stubs"
+version = "2.2.3.250527"
+requires_python = ">=3.10"
+summary = "Type annotations for pandas"
+groups = ["default"]
+dependencies = [
+    "numpy>=1.23.5",
+    "types-pytz>=2022.1.1",
+]
+files = [
+    {file = "pandas_stubs-2.2.3.250527-py3-none-any.whl", hash = "sha256:cd0a49a95b8c5f944e605be711042a4dd8550e2c559b43d70ba2c4b524b66163"},
+    {file = "pandas_stubs-2.2.3.250527.tar.gz", hash = "sha256:e2d694c4e72106055295ad143664e5c99e5815b07190d1ff85b73b13ff019e63"},
+]
+
+[[package]]
 name = "pandocfilters"
 version = "1.5.1"
 requires_python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
@@ -1552,6 +1567,21 @@ groups = ["default"]
 files = [
     {file = "platformdirs-4.3.8-py3-none-any.whl", hash = "sha256:ff7059bb7eb1179e2685604f4aaf157cfd9535242bd23742eadc3c13542139b4"},
     {file = "platformdirs-4.3.8.tar.gz", hash = "sha256:3d512d96e16bcb959a814c9f348431070822a6496326a4be0911c40b5a74c2bc"},
+]
+
+[[package]]
+name = "plot-shift"
+version = "0.1.5"
+requires_python = "<4.0,>=3.8"
+summary = "A Python package for advanced plotting utilities."
+groups = ["default"]
+dependencies = [
+    "matplotlib>=3.10.3",
+    "numpy>=2.2.6",
+]
+files = [
+    {file = "plot_shift-0.1.5-py3-none-any.whl", hash = "sha256:4de27f56d941e3e9b4c1d56b4b635be3fde057d00f6ecadd2dcd799d43971685"},
+    {file = "plot_shift-0.1.5.tar.gz", hash = "sha256:285d7adcf447d4abcadc780115b7c09d41cd672bd9da92de63693956a7c2d887"},
 ]
 
 [[package]]
@@ -2209,6 +2239,17 @@ groups = ["default"]
 files = [
     {file = "types_python_dateutil-2.9.0.20250516-py3-none-any.whl", hash = "sha256:2b2b3f57f9c6a61fba26a9c0ffb9ea5681c9b83e69cd897c6b5f668d9c0cab93"},
     {file = "types_python_dateutil-2.9.0.20250516.tar.gz", hash = "sha256:13e80d6c9c47df23ad773d54b2826bd52dbbb41be87c3f339381c1700ad21ee5"},
+]
+
+[[package]]
+name = "types-pytz"
+version = "2025.2.0.20250516"
+requires_python = ">=3.9"
+summary = "Typing stubs for pytz"
+groups = ["default"]
+files = [
+    {file = "types_pytz-2025.2.0.20250516-py3-none-any.whl", hash = "sha256:e0e0c8a57e2791c19f718ed99ab2ba623856b11620cb6b637e5f62ce285a7451"},
+    {file = "types_pytz-2025.2.0.20250516.tar.gz", hash = "sha256:e1216306f8c0d5da6dafd6492e72eb080c9a166171fa80dd7a1990fd8be7a7b3"},
 ]
 
 [[package]]
