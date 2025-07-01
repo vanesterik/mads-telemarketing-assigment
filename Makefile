@@ -49,7 +49,7 @@ reports:
 		--slide-level=1 \
 		--variable aspectratio:169 \
 		--variable theme:Pittsburgh \
-		--variable colortheme:beetle \
+		--variable colortheme:default \
 		--variable fonttheme:serif \
 
 	@echo "✅ Presentation generated successfully"

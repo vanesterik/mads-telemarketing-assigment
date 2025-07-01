@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:d71809a334a6109364d58abc9bdd8ef227caa88041df91b644d5742c4d3469ee"
+content_hash = "sha256:5b5fab0a9f8591d9370404345c8b33471b2a1281707328b8722b2fb592eba389"
 
 [[metadata.targets]]
 requires_python = ">=3.11"
@@ -1583,7 +1583,7 @@ files = [
 
 [[package]]
 name = "plot-shift"
-version = "0.1.5"
+version = "0.2.3"
 requires_python = "<4.0,>=3.8"
 summary = "A Python package for advanced plotting utilities."
 groups = ["default"]
@@ -1592,8 +1592,8 @@ dependencies = [
     "numpy>=2.2.6",
 ]
 files = [
-    {file = "plot_shift-0.1.5-py3-none-any.whl", hash = "sha256:4de27f56d941e3e9b4c1d56b4b635be3fde057d00f6ecadd2dcd799d43971685"},
-    {file = "plot_shift-0.1.5.tar.gz", hash = "sha256:285d7adcf447d4abcadc780115b7c09d41cd672bd9da92de63693956a7c2d887"},
+    {file = "plot_shift-0.2.3-py3-none-any.whl", hash = "sha256:b76d4224ff85d441b716f5015c039e5b32e1cc108b667cc49aa2281f1210c346"},
+    {file = "plot_shift-0.2.3.tar.gz", hash = "sha256:46575723b1b7d22a3256e23f28832a94bef8da97c6a113f39d966832432c2639"},
 ]
 
 [[package]]

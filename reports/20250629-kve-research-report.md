@@ -20,7 +20,7 @@ Dit geldt ook voor investeringsmaatschappijen die opereren op het gebied van inv
 
 Met dit als context richten we onze aandacht op de investeringsmaatschappij Blackrock, die een investering overweegt - om een Portugese bank over te nemen. Deze Portugese bank voert naast reguliere financiële activeitien onder andere ook telemarketing campagnes uit, om financiële producten te verkopen.
 
-De meest robuuste opgezette telemarketing operatie bestaan uit de campagnes om abonementen voor bank depositos te werven. Ze gebruiken hiervoor gegevens van bestaande klanten, die willekeurig gekozen worden om vervolgens uit te bellen. Dit met wisselend succes, omdat het moeilijk te voorspellen is - hoe een klant gaat reageren op een mogelijk storend telefoongesprek. Veel gesprekken zijn opgenomen in een dataset, waarin is aangegeven of de prospect een bank deposito abonnement wil afnemen.
+De meest robuuste telemarketing operatie bestaan uit de campagnes om abonementen voor bank depositos te werven. Ze gebruiken hiervoor gegevens van bestaande klanten, die willekeurig gekozen worden om vervolgens uit te bellen. Dit met wisselend succes, omdat het moeilijk te voorspellen is - hoe een klant gaat reageren op een mogelijk storend telefoongesprek. Veel gesprekken zijn opgenomen in een dataset, waarin is aangegeven of de prospect een bank deposito abonnement wil afnemen.
 
 Hier ligt voor Blackrock een mogelijkheid om dieper strategisch inzicht te krijgen met betrekking tot de overname van de bank. Dit door te onderzoeken of winst gemaximaliseerd kan worden door de willekeurige keuze van het telemarketing process te optimaliseren.
 
