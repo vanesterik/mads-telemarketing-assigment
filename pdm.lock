@@ -1583,7 +1583,7 @@ files = [
 
 [[package]]
 name = "plot-shift"
-version = "0.2.4"
+version = "0.2.5"
 requires_python = "<4.0,>=3.8"
 summary = "A Python package for advanced plotting utilities."
 groups = ["default"]
@@ -1592,8 +1592,8 @@ dependencies = [
     "numpy>=2.2.6",
 ]
 files = [
-    {file = "plot_shift-0.2.4-py3-none-any.whl", hash = "sha256:2697c57c641942174531248d417777b6ea86cb19e155082d7edbc9f1efd3dbfb"},
-    {file = "plot_shift-0.2.4.tar.gz", hash = "sha256:fad97dc9a1d0d21025939d326cbaade3ba4a5b08c8420dce220137fa5a57a763"},
+    {file = "plot_shift-0.2.5-py3-none-any.whl", hash = "sha256:893bacb77b51ca6abc400cfba80adcd8af5af12c83324903321a64923389ea3d"},
+    {file = "plot_shift-0.2.5.tar.gz", hash = "sha256:2609434eb3a1a75cc17673712f1b2a20dd3c4f74168604030997aae72002125f"},
 ]
 
 [[package]]

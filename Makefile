@@ -36,7 +36,8 @@ reports:
 	@for report in $(REPORTS_PATHS); do \
 		pandoc \
 			$${report}.md \
-			--output=$${report}.pdf; \
+			--output=$${report}.pdf \
+			--resource-path=${FIGURES_DIR}; \
 	done
 
 	@echo "✅ Reports generated successfully"
