@@ -26,6 +26,7 @@ install:
 
 ## Define various variables for reports
 REPORTS_DIR := reports
+CITATIONS_DIR := $(REPORTS_DIR)/citations
 FIGURES_DIR := $(REPORTS_DIR)/figures
 PRESENTATION_PATH := $(REPORTS_DIR)/20250629-kve-presentation
 REPORTS_PATHS := $(filter-out $(PRESENTATION_PATH), $(basename $(wildcard $(REPORTS_DIR)/*.md)))
@@ -36,6 +37,9 @@ reports:
 	@for report in $(REPORTS_PATHS); do \
 		pandoc \
 			$${report}.md \
+			--bibliography=${CITATIONS_DIR}/mads-telemarketing-assignment.bib \
+			--citeproc \
+			--csl=${CITATIONS_DIR}/ieee.xml \
 			--output=$${report}.pdf \
 			--resource-path=${FIGURES_DIR}; \
 	done
