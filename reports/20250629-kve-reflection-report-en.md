@@ -10,7 +10,7 @@ author: |
 
 # 1. Situation
 
-The situation took place in the spring of 2025, during the *Predictive Modelling* semester of the HAN Master in Applied Data Science. In this context, I was working on a research report for a machine learning project. I was involved as a student, with my lecturers from the program serving as supervisors and evaluators.
+The situation took place in the spring of 2025 during the *Predictive Modelling* semester of the HAN Master in Applied Data Science. In this context, I was working on a research report for a machine learning project. I was involved as a student, with my lecturers from the program serving as supervisors and evaluators.
 
 # 2. Task
 
@@ -30,11 +30,11 @@ Additionally, I decided to write the initial version of the report in Dutch, all
 
 # 4. Result
 
-This approach has worked significantly. Structuring the report using physical post-its gave me headspace and clarity, and helped me to better understand the context of my task. As a result, I felt more confident in the writing process and could work more effectively on the report's content.
+This approach has worked significantly. Structuring the report using physical post-its gave me headspace and clarity and helped me better understand the context of my task. As a result, I felt more confident in the writing process and could work more effectively on the report's content.
 
-However, I also noticed limitations in my writing process. I quickly fall into a certain writing style, where I dwell too long on phrasing, which can hinder progress. I discovered that I needed a second pair of eyes to help me recognize and improve these stylistic pitfalls.
+However, I also noticed limitations in my writing process. I quickly fall into a certain writing style where I dwell too long on phrasing, which can hinder progress. I discovered that I needed a second pair of eyes to help me recognize and improve these stylistic pitfalls.
 
-An appropriate analogy is how I used to cut a circle out of paper as a child: first roughly, and then refined it until it was truly round. In writing, this means for me: first putting everything on paper without too much self-criticism, and then rewriting with an eye for style, clarity, and tone.
+An appropriate analogy is how I used to cut a circle out of paper as a child: first roughly, and then refining it until it was truly round. In writing, this means for me putting everything on paper first without too much self-criticism and then rewriting with an eye for style, clarity, and tone.
 
 # 5. Reflection
 
@@ -42,4 +42,4 @@ I look back with satisfaction on my approach. I worked thoroughly and plan to ap
 
 What I've learned most is the importance of physical structure in the writing process. By visually breaking down the topic, I gained more control over the content and the cohesion between different parts. Additionally, I realized that perfection doesn't need to be achieved all at once. By approaching writing as an iterative process, the quality of the text improves with each revision.
 
-Next time, I would start with this approach a little earlier. That way, I might be able to incorporate insights from the structuring phase into the research project itself, rather than just in the reporting. The method I applied is versatile and certainly applicable in other situations where longer texts or reports need to be written.
+Next time, I would start with this approach a little earlier. That way, I might be able to incorporate insights from the structuring phase into the research project itself, rather than just in the report. The method I applied is versatile and certainly applicable in other situations where longer texts or reports need to be written.
