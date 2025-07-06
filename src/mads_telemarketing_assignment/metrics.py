@@ -105,12 +105,13 @@ def calculate_cost_estimates(
     hourly_wage: int = 35,
     revenue_per_success: int = 200,
 ) -> Tuple[
-    float,
-    float,
-    float,
-    int,
-    int,
-    int,
+    int,  # Hourly wage
+    float,  # Cost per call
+    int,  # Revenue per success
+    float,  # Total costs
+    int,  # Revenue
+    float,  # Profit
+    float,  # Profit margin
 ]:
     """
     Calculate the cost per call, total costs, profit, and revenue based on the DataFrame.
@@ -134,23 +135,26 @@ def calculate_cost_estimates(
 
     Returns
     -------
+    hourly_wage : int
+        The hourly wage used in the calculations (default: 35).
+
     cost_per_call : float
         The cost per call calculated based on the average call duration and preparation time.
+
+    revenue_per_success : int
+        The revenue per successful call (default: 200).
 
     total_costs : float
         The total costs calculated based on the number of calls and cost per call.
 
-    profit : float
-        The profit calculated as revenue minus total costs.
-
     revenue : int
         The total revenue calculated based on the number of successful calls.
 
-    hourly_wage : int, optional
-        The hourly wage used in the calculations (default: 35).
+    profit : float
+        The profit calculated as revenue minus total costs.
 
-    revenue_per_success : int, optional
-        The revenue per successful call (default: 200).
+    profit_margin : float
+        The profit margin calculated as profit divided by revenue, expressed as a percentage.
 
     """
     mean_calls = X["campaign"].mean()
@@ -165,12 +169,14 @@ def calculate_cost_estimates(
     total_costs = len(X) * cost_per_call
     revenue = len(y[y == 1]) * revenue_per_success
     profit = revenue - total_costs
+    profit_margin = profit / revenue if revenue > 0 else 0.0
 
     return (
-        cost_per_call,
-        total_costs,
-        profit,
-        revenue,
         hourly_wage,
+        cost_per_call,
         revenue_per_success,
+        total_costs,
+        revenue,
+        profit,
+        profit_margin,
     )

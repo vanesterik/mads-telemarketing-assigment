@@ -8,10 +8,6 @@ author: |
   | kd.vanesterik@student.han.nl
 ---
 
-# 0. Abstract
-
-
-
 # 1. Introduction
 
 Voor elk commercieel bedrijf bestaat de plicht om winst te maken. Dit om op basis daarvan investeringen te doen, groei te realiseren en continuiteit te handhaven. [@PrinciplesCorporateFinance2024] Deze verantwoordelijkheid is essentieel voor het bedrijf richting werknemers maar ook richting aandeelhouders. Voor aandeelhouders bestaat dit uit waardecreatie, om daarmee het rendement van de investeringen van aandeelhouders te vergroten.
@@ -257,21 +253,30 @@ Daarnaast is het zo dat de instances die geclassificeerd kunnen worden als `not-
 
 We gebruiken cross-validatie om in eerste instantie de shortlist aan classificaitemodellen met elkaar te vergelijken. Deze cross-validatie maakt gebruik van de train-set en levert tevens de input voor de voorgestelde MP metric. De metric heeft een ratio aan revenue en cost nodig en gebruikt de train-set om die uit te rekenen. Dit omdat we cross-validatie willen doen op basis van een realistische verhouding die in de train-set aanwezig is.
 
-<table>
+| Setting             | Value  |
+| ------------------- | ------ |
+| Hourly Wage         | 35     |
+| Cost Per Call       | 10.9   |
+| Revenue Per Success | 200.00 |
 
-De bovenstaande waarden vullen we in de MP metric voor de cross-validatie. Daar komen de volgende resultaten uit:
+De bovenstaande verhoudingen geven de volgende resultaten:
 
-| Model         |   Optimal Threshold | Maximum Profit   |
-|---------------|---------------------|------------------|
-| Random Forest |                0.13 | 67,240           |
+| Model               | Optimal Threshold | Profit        | Profit Margin |
+| ------------------- | ----------------- | ------------- | ------------- |
+| AdaBoost            | 0.37              | 1,451,366     | 89.13%        |
+| Gradient Boosting   | 0.11              | 1,453,509     | 89.76%        |
+| K-Nearest Neighbors | 0.01              | 1,453,482     | 90.46%        |
+| Logistic Regression | 0.06              | 1,450,681     | 89.04%        |
+| Random Forest       | 0.09              | **1,460,038** | **90.87%**    |
+| XGBoost             | 0.03              | 1,453,330     | 89.46%        |
 
-Met deze resultaten is het duidelijk dat <classification-model> de meeste winst oplevert. Echter willen we nog evalueren of het geselecteerde model niet under- of over-fit. Dit doen we met dezelfde MP metric, maar dan op basis van genormaliseerde waarden die de metric berekent. Dit omdat absolute winst getallen niet geschikt zijn om een learning curve te berekenen, doordat deze waarden niet in dezelfde eenheid of schaal zijn - waardoor ze geen eerlijke vergelijking mogelijk maken. De learning-curves in figuur 4 illustreren de evaluatie van het geselecteerde model.
+De MP-plots in figuur 4 dienen als volgt gelezen te worden: bij een threshold van 0 worden alle prospects gebeld, terwijl er bij een threshold van 1 geen enkele prospect gebeld wordt.
+
+![Model Selection](model-selection.png)
+
+Met deze resultaten is het duidelijk dat het Random Forest model de meeste winst oplevert. Echter willen we nog evalueren of het geselecteerde model niet under- of over-fit. Dit doen we met dezelfde MP metric, maar dan op basis van genormaliseerde waarden die de metric berekent. Dit omdat absolute winst getallen niet geschikt zijn om een learning curve te berekenen, doordat deze waarden niet in dezelfde eenheid of schaal zijn - waardoor ze geen eerlijke vergelijking mogelijk maken. De learning-curves in figuur 5 illustreren de evaluatie van het geselecteerde model.
 
 ![Model Evaluation Learning Curves](model-evaluation-learning-curves.png)
-
-Uiteindelijk kunnen we de huidige en de voorgestelde werkwijze qua telemarketing proces met elkaar vergelijken. Hiervoor gebruiken we dezelfde berekening als eerder, om de revenue en cost ratio vast te stellen. Echter doen we dit nu op basis van de test-set.
-
-<table>
 
 Veel gedaan ... misschien nu tijd voor een dansje.
 
@@ -288,10 +293,25 @@ Om deze issues op te lossen in een mogelijke vervolgonderzoek, is er contact nod
 
 # 6. Conclusion
 
-Bij het evalueren van de resultaten kunnen we concluderen dat er aanzienlijke optimalisatiemogelijkheden bestaan binnen het telemarketingproces. Dit leidt ons tot de conclusie dat de investering van Blackrock in de Portugese bank gerechtvaardigd is vanuit het perspectief van de aandeelhouders. In de onderstaande tabel worden twee scenario's ter vergelijking gepresenteerd:
+Als conclusie willen we de effectiviteit van de huidige en voorgestelde telemarketingprocessen analyseren en hun impact op de winstgevendheid evalueren.
 
-<table>
+De ratio voor de berekeningen:
 
-Een oud  Nederlands gezegde is nu goed van toepassing met betrekking tot de voorgestelde overname: "Gas op die lolly!"
+| Setting             | Value  |
+| ------------------- | ------ |
+| Hourly Wage         | 35     |
+| Cost Per Call       | 10.9   |
+| Revenue Per Success | 200.00 |
+
+Geven de volgende resultaten:
+
+| Procedure                   | Profit     | Profit Margin |
+| --------------------------- | ---------- | ------------- |
+| Call All Prospects          | -89,816.05 | 0.00%         |
+| Call Preselected Propspects | 365,160    | 89.2%         |
+
+Met evaluatie van deze resultaten kunnen we concluderen dat er aanzienlijke optimalisatiemogelijkheden bestaan binnen het telemarketingproces. Dit leidt ons tot de conclusie dat de investering van Blackrock in de Portugese bank gerechtvaardigd is vanuit het perspectief van de aandeelhouders.
+
+Een oud Nederlands gezegde is nu goed van toepassing: "Gas op die lolly!"
 
 # References
