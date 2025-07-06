@@ -24,7 +24,7 @@ Het onderzoek laat zich verwoorden als:
 
 - Vergroot de conversie ratio van telemarketing campagnes,
 - Door de ontwikkeling van een selectieprocedure op basis van een voorspellingsmodel,
-- Die beter presteert dan uit bellen naar alle telemarketing prospects,
+- Die beter presteert dan uit te bellen naar alle telemarketing prospects,
 - Om winstmaximalisatie voor de aandeelhouders van Blackrock te realiseren.
 
 Het voorspellingsmodel is gebaseerd op binaire classificatie, omdat we willen voorspellen of een prospect een bankdeposito-abonnement zal afsluiten: ja of nee. Deze informatie is aanwezig in de eerder genoemde dataset en zal als trainings- en test-data dienen.
@@ -70,30 +70,19 @@ waarbij:
 - $\vec{fps}$, vector met FP's voor alle drempelwaarden;
 - $\vec{fps}$, vector met TN's voor alle drempelwaarden;
 
-Vervolgens calculeren de winst voor alle drempelwaarden:
+Tot slot calculeren en bepalen we de maximale winst voor alle drempelwaarden:
 
 $$
-\vec{p} = \textit{r} * \vec{tps} - \textit{c} * (\vec{tps} + \vec{fps})
-$$
-
-waarbij:
-
-- $\vec{p}$, vector met de winst voor alle drempelwaarden;
-- $\textit{r}$, scalar met de opbrengst per succesvol gesprek;
-- $\textit{c}$, scalar met de kosten per gesprek;
-- $\vec{tps}$, vector met TP's voor alle drempelwaarden;
-- $\vec{fps}$, vector met FP's voor alle drempelwaarden;
-
-Tot slot stellen we de maximale winst vast:
-
-$$
-\textit{p} = \max{(\vec{p})}
+\textit{p} = \max{(\textit{r} * \vec{tps} - \textit{c} * (\vec{tps} + \vec{fps}))}
 $$
 
 waarbij:
 
 - $\textit{p}$, scalar met de maximale winst;
-- $\vec{p}$, vector met de winst voor alle drempelwaarden;
+- $\textit{r}$, scalar met de opbrengst per succesvol gesprek;
+- $\textit{c}$, scalar met de kosten per gesprek;
+- $\vec{tps}$, vector met TP's voor alle drempelwaarden;
+- $\vec{fps}$, vector met FP's voor alle drempelwaarden;
 
 De MP metric introduceren we, om een verbinding te leggen tussen het technische gedeelte van het onderzoek en de business case. Dit met de gedachte dat standaard metrics vaak onvoldoende inzicht bieden met betrekking tot de strategische beslissingen [@DataScienceBusiness] die Blackrock doorgaans moet maken.
 
@@ -182,6 +171,16 @@ Een aantal taken aan preprocessing dienen uitgevoerd te worden, voordat modeltra
 
 Deze stappen zijn van belang om een goed presterend model te ontwikkelen.
 
+## 2.5 Train Test Split
+
+De volgende split aan train- en test-date dient uitgevoerd te worden:
+
+- shuffle
+- no stratify
+- 20% test size
+
+Het uiteindelijke classificatiemodel moet patronen aan prospect profielen ontdekken, die onafhankelijk van elkaar te bepalen zijn. Daarom stellen we een reguliere split voor, ookal is de dataset als tijdsreeks opgebouwd.
+
 ## 2.5. Model Shortlist
 
 De modellen die in aanmerking komen om geevalueerd te worden, voldoen aan de volgende condities:
@@ -210,7 +209,7 @@ De procedure om het onderzoek uit te voeren bestaat uit de volgende stappen:
 4. Split de dataset in een train- en test-set.
 5. Hypertune alle modellen op basis van de MP metric als score.
 6. Selecteer de best presterende parameters voor elk model.
-7. Modelleer alle modellen door middel cross-validatie.
+7. Modelleer alle modellen door middel van cross-validatie.
 8. Voorspel de probabilites van alle model door middel van cross-validatie.
 9. Bereken de maximale winst voor alle modellen.
 10. Evalueer de maximale winst voor alle modellen.
@@ -255,28 +254,47 @@ We gebruiken cross-validatie om in eerste instantie de shortlist aan classificai
 
 | Setting             | Value  |
 | ------------------- | ------ |
-| Hourly Wage         | 35     |
-| Cost Per Call       | 10.9   |
-| Revenue Per Success | 200.00 |
+| Hourly Wage         | 50.00  |
+| Cost Per Call       | 100.00 |
+| Revenue Per Success | 400.00 |
 
 De bovenstaande verhoudingen geven de volgende resultaten:
 
-| Model               | Optimal Threshold | Profit        | Profit Margin |
-| ------------------- | ----------------- | ------------- | ------------- |
-| AdaBoost            | 0.37              | 1,451,366     | 89.13%        |
-| Gradient Boosting   | 0.11              | 1,453,509     | 89.76%        |
-| K-Nearest Neighbors | 0.01              | 1,453,482     | 90.46%        |
-| Logistic Regression | 0.06              | 1,450,681     | 89.04%        |
-| Random Forest       | 0.09              | **1,460,038** | **90.87%**    |
-| XGBoost             | 0.03              | 1,453,330     | 89.46%        |
+| Model               | Optimal Threshold | Profit      | Profit Margin |
+| ------------------- | ----------------- | ----------- | ------------- |
+| AdaBoost            | 0.25              | 328,300     | 43.02%        |
+| Gradient Boosting   | 0.24              | 354,100     | 45.89%        |
+| K-Nearest Neighbors | 0.21              | 248,300     | 42.06%        |
+| Logistic Regression | 0.23              | 351,500     | 45.16%        |
+| Random Forest       | 0.2               | **362,500** | **42.73%**    |
+| XGBoost             | 0.24              | 203,800     | 22.53%        |
 
 De MP-plots in figuur 4 dienen als volgt gelezen te worden: bij een threshold van 0 worden alle prospects gebeld, terwijl er bij een threshold van 1 geen enkele prospect gebeld wordt.
 
 ![Model Selection](model-selection.png)
 
-Met deze resultaten is het duidelijk dat het Random Forest model de meeste winst oplevert. Echter willen we nog evalueren of het geselecteerde model niet under- of over-fit. Dit doen we met dezelfde MP metric, maar dan op basis van genormaliseerde waarden die de metric berekent. Dit omdat absolute winst getallen niet geschikt zijn om een learning curve te berekenen, doordat deze waarden niet in dezelfde eenheid of schaal zijn - waardoor ze geen eerlijke vergelijking mogelijk maken. De learning-curves in figuur 5 illustreren de evaluatie van het geselecteerde model.
+Met deze resultaten is het duidelijk dat het Random Forest model de meeste winst oplevert. Dit met de volgende hyperparameters:
 
-![Model Evaluation Learning Curves](model-evaluation-learning-curves.png)
+```
+{
+  'max_depth': 10,
+  'min_samples_leaf': 3,
+  'min_samples_split': 10,
+  'n_estimators': 100
+}
+```
+
+Deze hyperparameters leveren de profit curve plot in figuur 5 op.
+
+![Model Evaluation](model-evaluation.png)
+
+Omdat we gebruik maken van de door het model voorspelde probabilities is het van belang dat deze correct gecalibreerd zijn. Dit omdat de MP metric deze gebruikt om de winst per threshold te berekenen. Zoals in figuur 6 aangetoond wordt, is het Random Forest model redelijk gecalibreerd. Dit betekent dat de voorspelde probabilities overeenkomen met de werkelijke kansen van de positieve klasse.
+
+![Model Calibration](model-calibration.png)
+
+Tevens willen we nog evalueren of het geselecteerde model niet under- of over-fit. Dit doen we met dezelfde MP metric, maar dan op basis van genormaliseerde waarden die de metric berekent. Dit omdat absolute winst getallen niet geschikt zijn om een learning curve te berekenen, doordat deze waarden niet in dezelfde eenheid of schaal zijn - waardoor ze geen eerlijke vergelijking mogelijk maken. De learning-curves in figuur 5 illustreren de evaluatie van het geselecteerde model.
+
+![Learning Curves](learning-curves.png)
 
 Veel gedaan ... misschien nu tijd voor een dansje.
 
@@ -295,22 +313,21 @@ Om deze issues op te lossen in een mogelijke vervolgonderzoek, is er contact nod
 
 Als conclusie willen we de effectiviteit van de huidige en voorgestelde telemarketingprocessen analyseren en hun impact op de winstgevendheid evalueren.
 
-De ratio voor de berekeningen:
+De revenue-cost ratio voor de berekeningen zijn als volgt:
 
 | Setting             | Value  |
 | ------------------- | ------ |
-| Hourly Wage         | 35     |
-| Cost Per Call       | 10.9   |
-| Revenue Per Success | 200.00 |
+| Cost Per Call       | 100.00 |
+| Revenue Per Success | 400.00 |
 
-Geven de volgende resultaten:
+En geven de volgende resultaten:
 
-| Procedure                   | Profit     | Profit Margin |
-| --------------------------- | ---------- | ------------- |
-| Call All Prospects          | -89,816.05 | 0.00%         |
-| Call Preselected Propspects | 365,160    | 89.2%         |
+| Procedure                   | Profit  |
+| --------------------------- | ------- |
+| Call All Prospects          | 10,000  |
+| Call Preselected Propspects | 102,000 |
 
-Met evaluatie van deze resultaten kunnen we concluderen dat er aanzienlijke optimalisatiemogelijkheden bestaan binnen het telemarketingproces. Dit leidt ons tot de conclusie dat de investering van Blackrock in de Portugese bank gerechtvaardigd is vanuit het perspectief van de aandeelhouders.
+Met een evaluatie van deze resultaten kunnen we concluderen dat er aanzienlijke optimalisatiemogelijkheden bestaan binnen het telemarketingproces. Dit leidt ons tot de conclusie dat de investering van Blackrock in de Portugese bank gerechtvaardigd is vanuit het perspectief van de aandeelhouders.
 
 Een oud Nederlands gezegde is nu goed van toepassing: "Gas op die lolly!"
 

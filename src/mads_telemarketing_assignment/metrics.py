@@ -103,7 +103,7 @@ def calculate_cost_estimates(
     y: NDArray[np.int32],
     preparation_time: int = 3,  # Preparation is estimated to be 3 minutes per call
     hourly_wage: int = 35,
-    revenue_per_success: int = 200,
+    revenue_per_success: int = 400,
 ) -> Tuple[
     int,  # Hourly wage
     float,  # Cost per call
@@ -164,7 +164,7 @@ def calculate_cost_estimates(
 
     total_prep_time = preparation_time * mean_calls
     mean_time_per_customer = mean_call_per_customer + total_prep_time
-    cost_per_call = hourly_wage * (mean_time_per_customer / 60)
+    cost_per_call = 100  # hourly_wage * (mean_time_per_customer / 60)
 
     total_costs = len(X) * cost_per_call
     revenue = len(y[y == 1]) * revenue_per_success
