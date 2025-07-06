@@ -10,32 +10,19 @@ author:
 
 ## Your Role in Today's Meeting
 
-- Your Position: You are the Data Science leadership team of our investment company.
+- Your Position: You are part of the Data Science leadership team of our investment company.
 - The Challenge: Our telemarketing division is currently operating at a loss.
 - The Proposal: We will present our research findings and a strategic plan for a turnaround.
 - Your Objective: Evaluate our proposal and decide whether to approve this project.
 
 ---
 
-## Dear stakeholders, we would like to present the findings of our research.
+## Dear stakeholders, 
+we would like to present the findings of our research.
 
 ---
 
-# Methodology
-
-1. Exploratory Data Analysis
-2. Predictive Modelling
-   - Introducing the **Maximum Profit** metric
-4. Model Selection
-5. Model Evaluation
-6. Conclusion
-   - Comparison of profit with and without predictive modelling 
-
----
-
-# Maximum Profit Metric
-
-Introducing the **Maximum Profit** metric to evaluate the performance of models, as well as the profitability of the telemarketing division:
+Introducing the **Maximum Profit** metric to evaluate the performance of models, as well as the profitability of the telemarketing division.
 
 ---
 
@@ -61,6 +48,18 @@ $$
 ---
 
 Basically, we are calculating the profit for each threshold. Then we are plotting these results to create a **Profit Curve**. This plot allows us to find the **Maximum Profit**.
+
+---
+
+# Methodology
+
+- Data Preprocessing
+- Exploratory Data Analysis
+- Splitting Data
+- Cross Validating Models
+- Selecting Model
+- Evaluating Model
+- Conclusion
 
 ---
 
@@ -90,7 +89,7 @@ Basically, we are calculating the profit for each threshold. Then we are plottin
 
 # Conclusion
 
-Comparison of profit with and without predictive modelling:
+Comparison of Profit with and without Predictive Modelling:
 
 | Procedure                   | Profit  |
 | --------------------------- | ------- |
@@ -123,4 +122,4 @@ Comparison of profit with and without predictive modelling:
 
 ---
 
-## Questions?
+![Questions](questions.png)
