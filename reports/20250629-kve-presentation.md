@@ -1,132 +1,126 @@
 ---
-date: 29th of June 2025
-title: Bank Telemarketing Decision Model
+date: 7th of July 2025
+title: Machine Learning For Profit Based Investing
 subtitle: Predictive Modelling (2024 P3A)
 institute: HAN - Master Applied Data Science
-# author:
-# - Koen van Esterik
-# - Sascha van den Hurk
-# - Steven Bontius
-# - Vincent Brand
+author:
+- Koen van Esterik
+- Steven Bontius
 ---
 
-## Research takeover of Portuguese bank by investment company.
+## Your Role in Today's Meeting
 
-Point of focus is the telemarketing campaign to sell bank deposit subscriptions.
-
----
-
-> Reduce randomly chosen telemarketing campaign prospects,  
-> by developing a predictive model,  
-> that performs better than random selection,  
-> to achieve profit maximization.
+- Your Position: You are the Data Science leadership team of our investment company.
+- The Challenge: Our telemarketing division is currently operating at a loss.
+- The Proposal: We will present our research findings and a strategic plan for a turnaround.
+- Your Objective: Evaluate our proposal and decide whether to approve this project.
 
 ---
 
-## Exploratory Data Analysis
-
-- classification task
-- bank-additional-full.csv
-- 41,188 rows
-- 21 columns
-- target: `y` (yes/no)
-- features: 20 columns
-- categorical: 10, numerical: 10
-- missing values: 0
+## Dear stakeholders, we would like to present the findings of our research.
 
 ---
 
-## Feature engineering
+# Methodology
 
-- `year`: Extract `year` from data description and `month`, `day_of_week` features
-
----
-
-!["Proportions of instances per year"](instance-proportions.png)
-
----
-
-!["Proportions of target"](target-proportions.png)
+1. Exploratory Data Analysis
+2. Predictive Modelling
+   - Introducing the **Maximum Profit** metric
+4. Model Selection
+5. Model Evaluation
+6. Conclusion
+   - Comparison of profit with and without predictive modelling 
 
 ---
 
-### Other Remarks
+# Maximum Profit Metric
 
-- Feature `duration` should be removed
-  - Duration of last contact, not available at prediction time
-- Mix of categorial and numerical values within `pdays` feature
-  - `pdays` is the number of days since last contact within campaign
-  - `pdays` = 999 means no previous contact
-  - `pdays` = 0 means contact on the same day
-  - instances with `pdays` = 999 did show previous contact, which is incorrect
+Introducing the **Maximum Profit** metric to evaluate the performance of models, as well as the profitability of the telemarketing division:
 
 ---
 
-## Data Preparation
-
-- Convert `y` to binary values
-  - `yes` = 1, `no` = 0
-- Remove `duration` feature
-- Split dataset into `approached` and `not approached`
-  - Filter dataset `pdays` = 999 for `not approached` 
-  - Rremove features `pdays`, `previous`, `poutcome` in `not approached`
+$$
+\vec{y_{\textit{pred}}} = \sum_{i=1}^{\vec{thresholds}} \begin{cases} 
+1 & \text{if } \vec{y_{\textit{probs}}} \geq \textit{threshold}_i \\ 
+0 & \text{otherwise} 
+\end{cases}
+$$
 
 ---
 
-## Modelling
-
-### Train and Test Split
-
-- Split based on `year` = 2010 as test set for both datasets
-- ...
+$$
+\vec{tps}, \vec{fns}, \vec{fps}, \vec{tns} = \sum_{i=1}^{\vec{thresholds}} \text{confusion\_matrix}(\vec{y_{\textit{true}}}, \vec{y_{\textit{pred}}})
+$$
 
 ---
 
-### Feature Transformation
-
-- Transform categorical features: 
-  - `job`, `marital`, `education`, `default`, `housing`, `loan`, `contact`, `month`, `day_of_week`, `year`
-- Scale numerical features:
-  - Approached: `age`, `campaign`,`emp.var.rate`, `cons.price.idx`, `cons.conf.idx`, `euribor3m`, `nr.employed`, `pdays`, `previous`, `poutcome`
-  - Not approached: `age`, `campaign`, `emp.var.rate`, `cons.price.idx`, `cons.conf.idx`, `euribor3m`, `nr.employed`
+$$
+\textit{total profit} = \max{(\textit{profit per subscription} * \vec{tps} - \textit{cost per call} * \vec{fps})}
+$$
 
 ---
 
-### Model Shortlist
-
-- Random Forest
-- AdaBoost
-- XGBoost
-
-Initially shortlisted due to the ability to handle imbalance in datasets.
+Basically, we are calculating the profit for each threshold. Then we are plotting these results to create a **Profit Curve**. This plot allows us to find the **Maximum Profit**.
 
 ---
 
-### Model Evaluation
+# Results
 
-### Approached dataset
-
-| Metric   |   Random Forest |   AdaBoost |   XGBoost |
-|----------|-----------------|------------|-----------|
-| Recall   |           0.891 |      0.717 |     0.796 |
-| ROC AUC  |           0.637 |      0.638 |     0.611 |
-
-### Not approached dataset
-
-| Metric   |   Random Forest |   AdaBoost |   XGBoost |
-|----------|-----------------|------------|-----------|
-| Recall   |            0    |      0     |     0     |
-| ROC AUC  |            0.54 |      0.539 |     0.548 |
+![Model Shortlist](presentation-model-shortlist.png)
 
 ---
 
-### Model Selection
+# Results
 
-- Select **AdaBoost** as the best performing model for **appoached** dataset
-- Select **XGBoost** as the best performing model for **not approached** dataset
-- Due to highest ROC AUC
-- ...
+![Model Calibration](presentation-model-calibration.png)
 
 ---
 
-> To be continued...
+# Results
+
+![Model Selection](presentation-model-selection.png)
+
+---
+
+# Results
+
+![Learning Curves](presentation-learning-curves.png)
+
+---
+
+# Conclusion
+
+Comparison of profit with and without predictive modelling:
+
+| Procedure                   | Profit  |
+| --------------------------- | ------- |
+| Call All Prospects          | 10,000  |
+| Call Preselected Propspects | 101,100 |
+
+---
+
+# Conclusion
+
+## "Gas op die lolly?"
+
+---
+
+# Remarks
+
+![Instances per Year](number-of-instances-per-year.png)
+
+---
+
+# Remarks
+
+![Proportion of Target Variable per Year](proportion-of-target-variable-per-year.png)
+
+---
+
+# Remarks
+
+![Proportion of Approached Prospects per Year](proportion-of-approached-prospects-per-year.png)
+
+---
+
+## Questions?

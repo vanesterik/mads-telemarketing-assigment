@@ -1,6 +1,6 @@
 ---
 date: 7th of July 2025
-title: Predicting Telemarketing Success Rate for Banking Product Subscriptions
+title: Machine Learning For Profit Based Investing
 subtitle: Predictive Modelling (2024 P3A)
 institute: HAN - Master Applied Data Science
 author: |
