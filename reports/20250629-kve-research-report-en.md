@@ -172,10 +172,11 @@ These steps are important for developing a well-performing model.
 
 ## 2.5 Train Test Split
 
-A regular train-test split [@Train_test_split] should be executed:
+A regular train-test split [@Train_test_split] should be executed with the following settings:
 
 - shuffle
-- no stratify
+- stratify on target feature
+- 80% training size
 - 20% test size
 
 Even though the dataset is structured as time series data, we believe using some sort of rolling window approach would produce a suboptimal predictive model. This is because the model should discover patterns in terms of prospect profiles that can be determined independently of each other. Therefore, we propose a regular split.
@@ -249,12 +250,12 @@ Moreover, instances classified as *not-approached* do contain information sugges
 
 # 4. Results
 
-We used cross-validation to initially compare the shortlist of classification models with one another. This cross-validation utilized the training set and also provided input for the proposed MP metric. The metric requires a ratio of revenue to cost, which we derived from the training set. This is because we want to perform cross-validation based on a realistic proportion that the training set could provide.
+We used cross-validation to initially compare the shortlist of classification models with one another. This cross-validation utilized the training set and also provided input for the proposed MP metric. The metric requires a ratio of gain to cost, which we derived from the training set. This is because we want to perform cross-validation based on a realistic proportion that the training set could provide.
 
-| Setting             | Value  |
-| ------------------- | ------ |
-| Cost Per Call       | 100.00 |
-| Revenue Per Success | 400.00 |
+| Setting          | Value  |
+| ---------------- | ------ |
+| Cost Per Call    | 100.00 |
+| Gain Per Success | 400.00 |
 
 The above ratios yielded the following results:
 
@@ -282,7 +283,7 @@ With these results, it is clear that the Random Forest model yielded the most pr
 }
 ```
 
-These hyperparameters produced the profit curve plot shown in Figure 5.
+These hyperparameters produced the profit curve plot shown in Figure 5. We project the optimal threshold calculated during the cross-validation using the training set. This because the model should not calculate the optimal threshold based on the test set, as this is considered data leakage.
 
 ![Model Evaluation](model-evaluation.png)
 
@@ -290,7 +291,7 @@ It is important that the probabilities predicted by the model are correctly cali
 
 ![Model Calibration](model-calibration.png)
 
-We also want to evaluate whether the selected model is underfitting or overfitting. We do this using the same MP metric but based on normalized values calculated by the metric. This is because absolute profit figures are not suitable for calculating a learning curve, as these values are not in the same unit or scale, which prevents a fair comparison. Figure 5 illustrates the learning curves of the selected model.
+We also want to evaluate whether the selected model is underfitting or overfitting. We do this using the same MP metric but based on normalized values calculated by the metric. This is because absolute profit figures are not suitable for calculating a learning curve, as these values are not in the same unit or scale, which prevents a fair comparison. This is illustrated in Figure 7, which shows the learning curves of the selected model.
 
 ![Learning Curves](learning-curves.png)
 
@@ -313,12 +314,12 @@ Contact with the owners of the dataset is required, in order to resolve the desc
 
 In conclusion, we analyze the effectiveness of the current and proposed telemarketing procedures and evaluate their impact on profitability.
 
-The revenue-cost ratio for the calculations is as follows:
+The gain-cost ratio for the calculations is as follows:
 
-| Setting             | Value  |
-| ------------------- | ------ |
-| Cost Per Call       | 100.00 |
-| Revenue Per Success | 400.00 |
+| Setting          | Value  |
+| ---------------- | ------ |
+| Cost Per Call    | 100.00 |
+| Gain Per Success | 400.00 |
 
 Which gives the following results:
 
@@ -327,8 +328,8 @@ Which gives the following results:
 | Call All Prospects          | 10,000  |
 | Call Preselected Propspects | 102,000 |
 
-When evaluating these results, we can conclude that there are significant opportunities for optimization within the current telemarketing procedure. This leads us to the conclusion that BlackRock's investment in the Portuguese bank is justified from the shareholders' perspective.
+When evaluating these results, we can conclude that there are significant opportunities for optimization within the current telemarketing procedure. This leads us to the conclusion that BlackRock's investment in the Portuguese bank is justified from the shareholders' perspective. 
 
-As an old Dutch expression goes: "Gas op die lolly!"
+However, we are aware that this would not be the only factor to consider when making such an investment decision. Additional research in other topics is required to determine whether the investment is indeed justified.
 
 # References

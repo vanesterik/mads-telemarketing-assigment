@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Optional, Tuple
 
 import numpy as np
 import pandas as pd
@@ -11,12 +11,14 @@ def calculate_profit_thresholds(
     y_probs: NDArray[np.float32],
     revenue_per_success: int = 10,
     cost_per_call: int = 1,
+    profit_index: Optional[int] = None,
 ) -> Tuple[
     NDArray[np.float32],
     NDArray[np.int32],
     float,
     int,
     float,
+    int,
 ]:
     """
     Compute the total profit for each threshold, identify the maximum profit and
@@ -52,6 +54,9 @@ def calculate_profit_thresholds(
 
     profit_margin : float
         The profit margin calculated by the maximum profit divided by the revenue.
+
+    profit_index : int
+        The index of the threshold that yields the maximum profit.
     """
 
     # Define thresholds from 0.0 to 1.0 with a step of 0.01
@@ -83,7 +88,9 @@ def calculate_profit_thresholds(
 
     # Calculate the total profit for each threshold and identify the threshold
     # with the maximum profit
-    profit_index = np.argmax(profits)
+    if profit_index is None:
+        profit_index = int(np.argmax(profits))
+
     profit = profits[profit_index]
     revenue = revenues[profit_index]
     profit_margin = profit / revenue if revenue > 0 else 0.0
@@ -95,6 +102,7 @@ def calculate_profit_thresholds(
         float(optimal_threshold),
         int(profit),
         float(profit_margin),
+        profit_index,
     )
 
 

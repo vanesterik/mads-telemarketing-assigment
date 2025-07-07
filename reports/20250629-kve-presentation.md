@@ -17,12 +17,28 @@ author:
 
 ---
 
-## Dear stakeholders, 
-we would like to present the findings of our research.
+## Dear stakeholders - We are very excited to have you here today as we would like to present the findings of our research.
 
 ---
 
-Introducing the **Maximum Profit** metric to evaluate the performance of models, as well as the profitability of the telemarketing division.
+# Problem Space
+
+- Telemarketing division operating at a loss
+- Increase the conversion rate of telemarketing calls
+- Predictive modelling to select prospects
+- Maximize profit from telemarketing calls
+
+---
+
+# Solution Space
+
+- Historical data
+- Binary classification task
+- Telemarketing prospect selection procedure
+
+---
+
+Introducing the **Maximum Profit** metric to evaluate the performance of predictive models as well as the profitability of the telemarketing division.
 
 ---
 
